@@ -1,3 +1,4 @@
+''' main.py '''
 from fastapi import FastAPI
 from database import start_db
 from routers import species, birds, birdspotting
