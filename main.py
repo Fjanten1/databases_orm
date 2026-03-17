@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from database import start_db
-from routers import species, birds
+from routers import species, birds, birdspotting
 
 app = FastAPI()
 
@@ -14,3 +14,4 @@ async def root():
 
 app.include_router(species.router)
 app.include_router(birds.router)
+app.include_router(birdspotting.router)
