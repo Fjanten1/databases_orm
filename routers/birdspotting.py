@@ -16,6 +16,9 @@ def get_birdspotting_repository(
 async def get_birdspottings(
     repo: Annotated[BirdspottingRepository, Depends(get_birdspotting_repository)]
 ):
+    '''
+    Get all birdspottings
+    '''
     return repo.get_all()
 
 @router.get("/{spotting_id}", response_model=Optional[BirdspottingRead])
@@ -23,6 +26,9 @@ async def get_birdspotting(
     spotting_id: int,
     repo: Annotated[BirdspottingRepository, Depends(get_birdspotting_repository)]
 ):
+    '''
+    Get a birdspotting by id
+    '''
     return repo.get_one(spotting_id)
 
 @router.post("/", response_model=BirdspottingRead)
@@ -30,4 +36,7 @@ async def add_birdspotting(
     spotting: BirdspottingCreate,
     repo: Annotated[BirdspottingRepository, Depends(get_birdspotting_repository)]
 ):
+    '''
+    Add a new birdspotting
+    '''
     return repo.insert(spotting)

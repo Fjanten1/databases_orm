@@ -14,6 +14,9 @@ def get_birds_repository(
 
 @router.get("/", response_model=List[Bird])
 async def get_birds(repo: Annotated[BirdsRepository, Depends(get_birds_repository)]):
+    '''
+    Get all birds
+    '''
     return repo.get_all()
 
 @router.post("/", response_model=Bird)
@@ -21,4 +24,7 @@ async def add_bird(
     bird: BirdCreate,
     repo: Annotated[BirdsRepository, Depends(get_birds_repository)]
 ):
+    '''
+    Add a new bird
+    '''
     return repo.insert(bird)
